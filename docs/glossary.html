@@ -81,7 +81,43 @@
     <h3 class="gloss-h">Goalie Stats</h3>
     <div id="gloss-goalies" class="gloss-table"></div>
 
+    <h3 class="gloss-h">Reading the Leaderboard</h3>
+    <div class="page-note">
+      <p>Every number is a <strong>percentile</strong> (0&ndash;100) ranked within the chosen pool
+      &mdash; forwards vs. forwards, defensemen vs. defensemen, goalies vs. goalies &mdash; so blue is
+      cold and red is elite. <strong>OVR</strong> is itself a percentile: each player's group scores are
+      blended with the same weights their trophy uses (<strong>Hart</strong> for forwards &mdash;
+      offense-led, so sheltered defensive minutes don't dominate; <strong>Norris</strong> for
+      defensemen; <strong>Vezina</strong> for goalies). That skill composite is then mixed
+      <strong>75/25 with workload</strong> &mdash; per-game ice time (min/GP) for skaters, total ice
+      time for goalies &mdash; and re-ranked across the pool. Group columns are bold; the rest are the
+      individual stats behind them.</p>
+      <p>Grey goalie cells (Shot Quality Faced, Shots Faced/60) are workload context, neither good
+      nor bad. Some stats are better when low (xGoals Against, Giveaways, Rebounds/Shot); their
+      percentile is already flipped so high is always good.</p>
+    </div>
+
+    <h3 class="gloss-h">How the Awards Are Picked</h3>
+    <div class="page-note">
+      <p>Each trophy is scored from the season's percentile profiles &mdash; the same Offense /
+      Two-Way / Defense (and goalie) group scores shown on a player card &mdash; combined with simple,
+      fixed weights, then blended 75/25 with a <strong>workload factor</strong> &mdash; per-game ice
+      time (min/GP) for skaters, total ice time for goalies &mdash; so a lightly-used player can't
+      out-rank a true workhorse. They are the <em>model's</em> view, not the real voters'.</p>
+      <p><strong>Rookies (Calder)</strong> are approximated as players in their first qualifying
+      season within this dataset (2008&ndash;09 onward), so it is unavailable for 2008&ndash;09
+      and can misflag late-arriving veterans.</p>
+      <p><strong>Cross-position &amp; the MVP.</strong> Most numbers on a player card are ranked
+      within position, so a defenseman at the 99th percentile in offense is elite <em>among
+      defensemen</em>, not vs. forwards. The <strong>Hart</strong> is the exception: it scores the
+      whole league &mdash; forwards, defensemen and goalies &mdash; each on their own role, with
+      skaters compared on one all-skater scale. On that honest footing forwards usually out-value
+      defensemen, so D rarely crack the top five, and a dominant goalie can win outright.</p>
+    </div>
+
     <footer class="page-note">
+      <p>Goalie shutouts and win&ndash;loss records are not in the MoneyPuck shot data, so the
+      summary shows GAA, save percentage and games played.</p>
       <p>Stats from <strong>MoneyPuck</strong>; headshots and logos from the NHL. Expected goals (xG)
       models the probability each unblocked shot becomes a goal from its location, type and context.
       Seasons span 2008&ndash;09 to 2025&ndash;26.</p>

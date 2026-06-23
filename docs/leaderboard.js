@@ -517,8 +517,13 @@ function renderBody() {
     });
     body.appendChild(tr);
   });
-  el("board-count").textContent =
-    `${list.length} ${pool === "G" ? "goalie" : pool === "D" ? "defenseman" : "forward"}${list.length === 1 ? "" : "s"}`;
+  const noun =
+    pool === "G"
+      ? list.length === 1 ? "goalie" : "goalies"
+      : pool === "D"
+        ? list.length === 1 ? "defenseman" : "defensemen"
+        : list.length === 1 ? "forward" : "forwards";
+  el("board-count").textContent = `${list.length} ${noun}`;
 }
 
 function render() {
