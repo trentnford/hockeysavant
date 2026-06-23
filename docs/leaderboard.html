@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HockeySavant - Leaderboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg class="puck" viewBox="0 0 44 34" aria-hidden="true">
+        <path d="M4 11 V23 A18 6 0 0 0 40 23 V11 Z" fill="#0a0807"/>
+        <ellipse cx="22" cy="11" rx="18" ry="6" fill="#211c18" stroke="#5b5249" stroke-width="1.4"/>
+        <path d="M4 11 V23 A18 6 0 0 0 40 23 V11" fill="none" stroke="#5b5249" stroke-width="1.4"/>
+        <ellipse cx="22" cy="11" rx="11" ry="3.4" fill="none" stroke="#3a332d" stroke-width="1"/>
+      </svg>
+      <h1>HOCKEY<span class="accent">SAVANT</span></h1>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Players</a>
+      <a href="leaderboard.html" class="on">Leaderboard</a>
+      <a href="awards.html">Awards</a>
+      <a href="glossary.html">Glossary</a>
+    </nav>
+  </header>
+
+  <main class="board">
+    <div class="board-toolbar">
+      <div>
+        <h2 class="board-title">Leaderboard</h2>
+        <p class="board-lead">Every qualified player, sortable by overall group percentiles or
+          any individual stat. Click a column header to sort.</p>
+      </div>
+      <div class="board-controls">
+        <div class="toggle" id="pool-toggle"></div>
+        <div class="toggle" id="board-sit-toggle"></div>
+        <label class="board-season">Season
+          <select id="board-season" class="season-select" aria-label="Season"></select>
+        </label>
+      </div>
+    </div>
+
+    <div class="board-subbar">
+      <div class="board-subbar-left">
+        <input id="board-filter" class="board-filter" type="text"
+               placeholder="Filter by name&hellip;" autocomplete="off">
+        <label class="board-season">Position
+          <select id="pos-filter" class="season-select" aria-label="Position"></select>
+        </label>
+        <label class="board-season">Team
+          <select id="team-filter" class="season-select" aria-label="Team"></select>
+        </label>
+        <label class="toi-filter">
+          <span class="toi-cap">Min TOI</span>
+          <input id="toi-slider" type="range" min="0" value="0" step="25" aria-label="Minimum time on ice">
+          <span id="toi-value" class="toi-value">all</span>
+        </label>
+      </div>
+      <span id="board-count" class="board-count"></span>
+    </div>
+
+    <div class="board-scroll">
+      <table id="board-table" class="board-table">
+        <thead id="board-head"></thead>
+        <tbody id="board-body"></tbody>
+      </table>
+    </div>
+
+    <footer class="page-note">
+      <p><strong>How to read it.</strong> Every number is a <strong>percentile</strong> (0&ndash;100)
+      ranked within the chosen pool &mdash; forwards vs. forwards, defensemen vs. defensemen,
+      goalies vs. goalies &mdash; so blue is cold and red is elite. <strong>OVR</strong> is itself
+      a percentile: each player's group scores are blended with the same weights their trophy uses
+      (<strong>Hart</strong> for forwards &mdash; offense-led, so sheltered defensive minutes don't
+      dominate; <strong>Norris</strong> for defensemen; <strong>Vezina</strong> for goalies). That
+      skill composite is then mixed <strong>75/25 with workload</strong> &mdash; per-game ice time
+      (min/GP) for skaters, total ice time for goalies &mdash; and re-ranked across the pool. Group
+      columns are bold; the rest are the individual stats behind them.</p>
+      <p>Grey goalie cells (Shot Quality Faced, Shots Faced/60) are workload context, neither good
+      nor bad. Some stats are better when low (xGoals Against, Giveaways, Rebounds/Shot); their
+      percentile is already flipped so high is always good. Qualifiers: skaters need &gt;200 minutes
+      or &gt;20 games; goalies need &gt;15 games or &gt;600 minutes.</p>
+    </footer>
+  </main>
+
+  <script src="leaderboard.js"></script>
+</body>
+</html>

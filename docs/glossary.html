@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HockeySavant - Glossary</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg class="puck" viewBox="0 0 44 34" aria-hidden="true">
+        <path d="M4 11 V23 A18 6 0 0 0 40 23 V11 Z" fill="#0a0807"/>
+        <ellipse cx="22" cy="11" rx="18" ry="6" fill="#211c18" stroke="#5b5249" stroke-width="1.4"/>
+        <path d="M4 11 V23 A18 6 0 0 0 40 23 V11" fill="none" stroke="#5b5249" stroke-width="1.4"/>
+        <ellipse cx="22" cy="11" rx="11" ry="3.4" fill="none" stroke="#3a332d" stroke-width="1"/>
+      </svg>
+      <h1>HOCKEY<span class="accent">SAVANT</span></h1>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Players</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="awards.html">Awards</a>
+      <a href="glossary.html" class="on">Glossary</a>
+    </nav>
+  </header>
+
+  <main class="gloss">
+    <h2 class="gloss-title">Glossary &amp; Methodology</h2>
+    <p class="gloss-lead">What the numbers mean and how they're ranked.</p>
+
+    <section class="gloss-concepts">
+      <div class="gloss-card">
+        <h3>Everything is a percentile</h3>
+        <p>Each stat is shown as a <strong>percentile</strong> from 0 to 100 &mdash; the share of
+        peers a player beats. 90 means better than 90% of comparable players that season. Color runs
+        <span class="cold">cold (low)</span> to <span class="hot">elite (high)</span>; for stats
+        where less is better, the percentile is flipped so high is always good.</p>
+      </div>
+      <div class="gloss-card">
+        <h3>Ranked within position</h3>
+        <p>Percentiles are pooled by position: forwards vs. forwards, defensemen vs. defensemen,
+        goalies vs. goalies, recomputed each season. A defenseman at the 90th percentile in offense
+        is elite <em>among defensemen</em>, not against forwards.</p>
+      </div>
+      <div class="gloss-card">
+        <h3>All vs. 5-on-5</h3>
+        <p><strong>All</strong> situations include power play and penalty kill; <strong>5-on-5</strong>
+        isolates even-strength play, stripping out special-teams role. Selke (defensive forward) is
+        judged on 5-on-5 so penalty-killers aren't punished for the chances the PK concedes.</p>
+      </div>
+      <div class="gloss-card">
+        <h3>OVR &amp; the awards</h3>
+        <p>A player's <strong>OVR</strong> blends their group percentiles with the same weights their
+        trophy uses &mdash; Hart for forwards (offense-led), Norris for defensemen, Vezina for goalies
+        &mdash; then that composite is re-ranked into its own percentile.</p>
+      </div>
+      <div class="gloss-card">
+        <h3>Who qualifies</h3>
+        <p>Skaters need more than <strong>200 minutes</strong> or <strong>20 games</strong>; goalies
+        need more than <strong>15 games</strong> or <strong>600 minutes</strong>. Awards also fold in a
+        workload factor so a hot small sample can't out-rank a full season.</p>
+      </div>
+      <div class="gloss-card warn">
+        <h3>A caveat on defense</h3>
+        <p>The on-ice &ldquo;against&rdquo; stats (xGoals Against/60) reward <strong>sheltered
+        usage</strong> &mdash; a bottom-six player who faces weak competition can post strong
+        suppression. It's the best team-defense signal here, not a pure individual-skill measure.</p>
+      </div>
+    </section>
+
+    <div class="gloss-legend">
+      <span><b class="dir up">&uarr;</b> higher is better</span>
+      <span><b class="dir down">&darr;</b> lower is better</span>
+      <span><b class="dir ctx">&ndash;</b> context, neither good nor bad</span>
+    </div>
+
+    <h3 class="gloss-h">Skater Stats</h3>
+    <div id="gloss-skaters" class="gloss-table"></div>
+
+    <h3 class="gloss-h">Goalie Stats</h3>
+    <div id="gloss-goalies" class="gloss-table"></div>
+
+    <footer class="page-note">
+      <p>Stats from <strong>MoneyPuck</strong>; headshots and logos from the NHL. Expected goals (xG)
+      models the probability each unblocked shot becomes a goal from its location, type and context.
+      Seasons span 2008&ndash;09 to 2025&ndash;26.</p>
+    </footer>
+  </main>
+
+  <script src="glossary.js"></script>
+</body>
+</html>

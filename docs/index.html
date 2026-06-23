@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HockeySavant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg class="puck" viewBox="0 0 44 34" aria-hidden="true">
+        <!-- original line-art hockey puck (side view): cylinder body + top face -->
+        <path d="M4 11 V23 A18 6 0 0 0 40 23 V11 Z" fill="#0a0807"/>
+        <ellipse cx="22" cy="11" rx="18" ry="6" fill="#211c18" stroke="#5b5249" stroke-width="1.4"/>
+        <path d="M4 11 V23 A18 6 0 0 0 40 23 V11" fill="none" stroke="#5b5249" stroke-width="1.4"/>
+        <ellipse cx="22" cy="11" rx="11" ry="3.4" fill="none" stroke="#3a332d" stroke-width="1"/>
+      </svg>
+      <h1>HOCKEY<span class="accent">SAVANT</span></h1>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="on">Players</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="awards.html">Awards</a>
+      <a href="glossary.html">Glossary</a>
+    </nav>
+    <div class="search-wrap">
+      <input id="search" type="text" placeholder="Search a skater&hellip;" autocomplete="off">
+      <ul id="suggest" class="suggest"></ul>
+    </div>
+  </header>
+
+  <div class="player-layout">
+  <main id="card" class="card hidden">
+    <div class="card-head">
+      <div class="head-id">
+        <img id="p-photo" class="headshot" alt="" src="">
+        <div>
+          <div class="name-row">
+            <h2 id="p-name"></h2>
+            <img id="p-logo" class="team-logo" alt="" src="">
+          </div>
+          <p id="p-sub" class="sub"></p>
+          <p id="p-line" class="statline"></p>
+        </div>
+      </div>
+      <div class="card-controls">
+        <select id="season-select" class="season-select" aria-label="Season"></select>
+        <div class="toggle" id="sit-toggle"></div>
+      </div>
+    </div>
+    <div id="sliders" class="sliders"></div>
+    <p class="legend">Percentile rank vs <span id="pool-label"></span> - <span class="cold">cold</span> &rarr; <span class="hot">elite</span></p>
+  </main>
+
+  <div class="player-side">
+  <section id="trajectory" class="trajectory hidden">
+    <h3 class="trajectory-head">By Season <span id="traj-sit" class="traj-sit"></span></h3>
+    <div class="charts">
+      <figure class="chart">
+        <figcaption id="traj-cap-groups">Group Percentiles</figcaption>
+        <div id="chart-groups"></div>
+      </figure>
+      <figure class="chart">
+        <figcaption>Overall Rating (OVR)</figcaption>
+        <div id="chart-ovr"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section id="similar" class="similar hidden">
+    <h3 class="similar-head">Most Similar <span id="similar-by"></span></h3>
+    <div id="similar-list" class="similar-list"></div>
+  </section>
+  </div>
+  </div>
+
+  <section id="empty" class="empty">
+    <svg class="empty-puck" viewBox="0 0 44 34" aria-hidden="true">
+      <path d="M4 11 V23 A18 6 0 0 0 40 23 V11 Z" fill="#c9c1b2"/>
+      <ellipse cx="22" cy="11" rx="18" ry="6" fill="#ded7c8" stroke="#b3aa98" stroke-width="1.4"/>
+      <path d="M4 11 V23 A18 6 0 0 0 40 23 V11" fill="none" stroke="#b3aa98" stroke-width="1.4"/>
+      <ellipse cx="22" cy="11" rx="11" ry="3.4" fill="none" stroke="#cfc7b6" stroke-width="1"/>
+    </svg>
+    <p class="empty-lead">Every NHL skater and goalie, ranked by percentile against players at
+      their own position. Search a name above to pull up their card.</p>
+    <p class="empty-label">Or jump to a star</p>
+    <div id="empty-chips" class="chips"></div>
+  </section>
+
+  <footer class="page-note">
+    <p><strong>A note on the defensive numbers.</strong> The on-ice &ldquo;against&rdquo; stats
+    (xGoals Against/60) reward sheltered usage; a bottom-six player who mostly faces
+    weak competition can post strong suppression numbers. It is the best team-defense signal
+    in this data, but not a pure individual-skill measure.</p>
+    <p>Percentiles are ranked within position; forwards are compared against forwards,
+    defensemen against defensemen, and goalies against goalies. Qualifiers: skaters need
+    &gt;200 minutes or &gt;20 games played; goalies need &gt;15 games or &gt;600 minutes.
+    Grey (-) goalie bars are workload context; they show how hard the shots faced were,
+    neither good nor bad.</p>
+    <p>Goalie shutouts and win&ndash;loss records are not in the MoneyPuck shot data, so the
+    summary shows GAA, save percentage and games played. Stats from MoneyPuck; headshots and
+    logos from the NHL. 2025&ndash;26 regular season.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
