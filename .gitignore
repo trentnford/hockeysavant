@@ -4,3 +4,6 @@
 # Python
 __pycache__/
 *.pyc
+
+# Raw MoneyPuck source CSVs (build inputs only, not served by the site)
+data/*.csv

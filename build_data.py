@@ -24,6 +24,9 @@ import os
 
 HERE = os.path.dirname(__file__)
 OUT_DIR = os.path.join(HERE, "docs", "data")
+# Raw MoneyPuck CSVs live here, untracked (too large for git). Drop the
+# skaters*.csv / goalies*.csv files into ./data/ before running this script.
+DATA_DIR = os.path.join(HERE, "data")
 SEASONS = list(range(9, 27))          # 09 (2008-09) .. 26 (2025-26)
 GOALIE_SEASONS = set(SEASONS)         # goalies present for every season
 SITUATIONS = ["all", "5on5"]
@@ -539,7 +542,7 @@ def main():
     for yy in SEASONS:
         label = season_label(yy)
         skaters = build_players(
-            os.path.join(HERE, f"skaters{yy:02d}.csv"), STATS,
+            os.path.join(DATA_DIR, f"skaters{yy:02d}.csv"), STATS,
             pool_fn=lambda r: "D" if r["position"] == "D" else "F",
             qualifier_fn=lambda r: num(r["icetime"]) / 60 > 200 or num(r["games_played"]) > 20,
             seed_fn=seed_skater,
@@ -547,7 +550,7 @@ def main():
         players = skaters
         if yy in GOALIE_SEASONS:
             players = players + build_players(
-                os.path.join(HERE, f"goalies{yy:02d}.csv"), STATS_G,
+                os.path.join(DATA_DIR, f"goalies{yy:02d}.csv"), STATS_G,
                 pool_fn=lambda r: "G",
                 qualifier_fn=lambda r: num(r["games_played"]) > 15 or num(r["icetime"]) / 60 > 600,
                 seed_fn=seed_goalie)
