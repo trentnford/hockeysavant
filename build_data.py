@@ -27,7 +27,7 @@ OUT_DIR = os.path.join(HERE, "docs", "data")
 # Raw MoneyPuck CSVs live here, untracked (too large for git). Drop the
 # skaters*.csv / goalies*.csv files into ./data/ before running this script.
 DATA_DIR = os.path.join(HERE, "data")
-SEASONS = list(range(9, 27))          # 09 (2008-09) .. 26 (2025-26)
+SEASONS = list(range(9, 28))          # 09 (2008-09) .. 26 (2025-26)
 GOALIE_SEASONS = set(SEASONS)         # goalies present for every season
 SITUATIONS = ["all", "5on5"]
 
