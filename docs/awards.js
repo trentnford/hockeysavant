@@ -145,8 +145,8 @@ function renderHistory() {
 
 // ---- boot ----
 Promise.all([
-  fetch("data/index.json").then((r) => r.json()),
-  fetch("data/awards.json").then((r) => r.json()),
+  fetch("data/index.json", { cache: "no-cache" }).then((r) => r.json()),
+  fetch("data/awards.json", { cache: "no-cache" }).then((r) => r.json()),
 ]).then(([idx, awards]) => {
   IDX = idx;
   AWARDS = awards;

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build Hockey Savant data from MoneyPuck's multi-season skater files + goalies.
 
-Inputs: skaters09.csv ... skaters26.csv (suffix = ending year, so 09 = 2008-09)
-and goalies.csv (2025-26 only, for now).
+Inputs: skaters09.csv ... skaters27.csv (suffix = ending year, so 09 = 2008-09)
+and goalies09.csv ... goalies27.csv.
 
 Outputs (docs/data/):
   index.json          - seasons list, stat schemas, situations, headshot codes
@@ -16,7 +16,6 @@ Design (locked during workshop):
     >15 GP OR >600 min.
   - Situations exposed: 'all' and '5on5' (toggle).
   - Similar players (computed client-side) stay within one season.
-  - Goalies exist only in 2025-26 for now.
 """
 import csv
 import json
@@ -27,7 +26,7 @@ OUT_DIR = os.path.join(HERE, "docs", "data")
 # Raw MoneyPuck CSVs live here, untracked (too large for git). Drop the
 # skaters*.csv / goalies*.csv files into ./data/ before running this script.
 DATA_DIR = os.path.join(HERE, "data")
-SEASONS = list(range(9, 28))          # 09 (2008-09) .. 26 (2025-26)
+SEASONS = list(range(9, 28))          # 09 (2008-09) .. 27 (2026-27)
 GOALIE_SEASONS = set(SEASONS)         # goalies present for every season
 SITUATIONS = ["all", "5on5"]
 
@@ -585,7 +584,7 @@ def main():
     with open(os.path.join(OUT_DIR, "index.json"), "w") as f:
         json.dump({
             "seasons": seasons_desc,
-            "default_season": "2025-26",
+            "default_season": seasons_desc[0],
             "situations": SITUATIONS,
             "headshot_seasons": headshot_seasons,
             "stats": meta_stats(STATS), "groups": SKATER_GROUPS,

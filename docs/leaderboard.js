@@ -544,7 +544,7 @@ el("toi-slider").addEventListener("input", (e) => {
   renderBody();          // TOI filter just hides rows; OVR ranks stay pool-wide
 });
 
-fetch("data/index.json").then((r) => r.json()).then((idx) => {
+fetch("data/index.json", { cache: "no-cache" }).then((r) => r.json()).then((idx) => {
   IDX = idx;
   season = IDX.seasons.includes(IDX.default_season) ? IDX.default_season : IDX.seasons[0];
   sit = IDX.situations.includes("all") ? "all" : IDX.situations[0];

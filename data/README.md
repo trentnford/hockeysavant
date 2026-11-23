@@ -6,7 +6,7 @@ of the published site — the site only needs the generated JSON in `docs/data/`
 
 Before running `python3 build_data.py`, place these MoneyPuck CSVs here:
 
-- `skaters09.csv` … `skaters26.csv`  (suffix = ending year; 09 = 2008-09)
-- `goalies09.csv` … `goalies26.csv`
+- `skaters09.csv` … `skaters27.csv`  (suffix = ending year; 09 = 2008-09)
+- `goalies09.csv` … `goalies27.csv`
 
 Source: MoneyPuck per-season player summaries (https://moneypuck.com/data.htm).

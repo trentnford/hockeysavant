@@ -48,7 +48,7 @@ function loadSeason(label) {
     .then((d) => { seasonCache[label] = d; return d; });
 }
 
-// pick which season to show first for a player: prefer the default (2025-26),
+// pick which season to show first for a player: prefer the latest default,
 // else their most recent qualifying season (seasons[] is sorted latest-first).
 function defaultSeasonFor(entry) {
   return entry.seasons.includes(IDX.default_season) ? IDX.default_season : entry.seasons[0];
@@ -363,8 +363,8 @@ function buildChips() {
 
 // ---- boot ----
 Promise.all([
-  fetch("data/index.json").then((r) => r.json()),
-  fetch("data/players_index.json").then((r) => r.json()),
+  fetch("data/index.json", { cache: "no-cache" }).then((r) => r.json()),
+  fetch("data/players_index.json", { cache: "no-cache" }).then((r) => r.json()),
 ]).then(([idx, search]) => {
   IDX = idx;
   SEARCH = search;
